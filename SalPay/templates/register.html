@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %}Create Account - SALPAY{% endblock %}
+{% block content %}
+<div class="limiter my-4">
+    <div class="container-login100">
+        <div class="wrap-login100 p-t-50 p-b-90">
+            <form class="login100-form validate-form flex-sb flex-w" action="/register/" method="post">
+                {% csrf_token %}
+                <span class="login100-form-title p-b-51">
+                    Create Account
+                </span>
+                {% if messages %}
+                {% for message in messages %}
+                {% if message.tags == 'info' %}
+                <div class="alert alert-info alert-dismissible fade show" style="width: 100%;" role="alert">
+                    {{message}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                <div class="wrap-input100 validate-input m-b-16" data-validate="Username is required">
+                    <input class="input100" type="text" required name="enroll" placeholder="Enrollment">
+                    <span class="focus-input100"></span>
+                </div>
+                <div class="wrap-input100 validate-input m-b-16" data-validate="Email is required">
+                    <input class="input100" type="email" required name="email" placeholder="Email">
+                    <span class="focus-input100"></span>
+                </div>
+                <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
+                    <input class="input100" type="password" required name="pass" placeholder="Password">
+                    <span class="focus-input100"></span>
+                </div>
+                <div class="wrap-input100 validate-input m-b-16" data-validate="CPassword is required">
+                    <input class="input100" type="password" required name="cpass" placeholder="Confirm Password">
+                    <span class="focus-input100"></span>
+                </div>
+                <div class="container-login100-form-btn m-t-17">
+                    <button class="btn btn-primary login-btn">
+                        Create Account
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

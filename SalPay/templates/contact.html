@@ -1,0 +1,85 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %}Contact - SALPAY{% endblock %}
+{% block content %}
+<div class="sub_header_in sticky_header">
+    <div class="container text-center">
+        <h1>Contact SALPAY</h1>
+    </div>
+    <!-- /container -->
+</div>
+<!-- /sub_header -->
+<main>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3670.3711044271868!2d72.49206221433539!3d23.083507119841922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9ce9ec89be89%3A0x175a6f3842d94199!2sSAL+Education+Campus!5e0!3m2!1sen!2sin!4v1551092822765" width="1350" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <!-- /map -->
+    <div class="container margin_60_35">
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.tags == "success" %}
+        <div class="alert alert-success alert-dismissible fade show" style="width: 100%;" role="alert">
+            {{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div> 
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        <div class="row justify-content-center">
+            <div class="col-xl-5 col-lg-6 pr-xl-5">
+                <form method="post" action="/contact/">
+                    {% csrf_token %}
+                    <div class="main_title_3">
+                        <span></span>
+                        <h2>Send us a message</h2>
+                    </div>
+                    <div id="message-contact"></div>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input class="form-control" type="text" required id="name_contact" name="name">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input class="form-control" type="email" required id="email_contact" name="email">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Telephone</label>
+                                <input class="form-control" type="text" required id="phone_contact" name="phone">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /row -->
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea class="form-control" id="message_contact" required name="msg" style="height:120px;"></textarea>
+                    </div>
+                    <p class="add_top_30"><input type="submit" value="Submit" class="btn_1" id="submit-contact"></p>
+                </form>
+            </div>
+            <div class="col-xl-5 col-lg-6 pl-xl-5">
+                <div class="box_contacts">
+                    <i class="ti-support"></i>
+                    <h2>Need Help?</h2>
+                    <a href="#0">079 - 6521 3534</a> - <a href="#0">hr@sal.edu.in</a>
+                </div>
+                <div class="box_contacts">
+                    <i class="ti-help-alt"></i>
+                    <h2>Questions?</h2>
+                    <a href="#0">079 - 6521 3534</a> - <a href="#0">hr@sal.edu.in</a>
+                </div>
+                <div class="box_contacts">
+                    <i class="ti-home"></i>
+                    <h2>Address</h2>
+                    <a href="#0">Opp, Science city, Sola Bhadaj Road,Ahmedabad.<br>Gujarat 380060</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /container -->
+</main>
+<!--/main-->
+{% endblock %}

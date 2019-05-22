@@ -1,0 +1,106 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %}Profile SALPAY{% endblock %}
+{% block content %}
+<div class="sub_header_in sticky_header">
+    <div class="container text-center">
+        <h1>Profile</h1>
+    </div>
+    <!-- /container -->
+</div>
+<div class="container my-4" id="profilemodel">
+	{% if messages %}
+	{% for message in messages %}
+	{% if message.tags == 'success' %}
+	<div class="alert alert-success alert-dismissible fade show" style="width: 100%;" role="alert">
+	    {{message}}
+	    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	        <span aria-hidden="true">&times;</span>
+	    </button>
+	</div>
+	{% endif %}
+	{% endfor %}
+	{% endif %}
+    <div class="jumbotron">
+        <p class="lead">Name : {{student.name}}</p>
+        <p class="lead">Enrollment : {{student.enrollment}}</p>
+        <p class="lead">Email : {{student.email}}</p>
+        <p class="lead">Course : {{student.course}}</p>
+        <p class="lead">Branch : {{student.branch}}</p>
+        <p class="lead">Phone : {{student.phone}}</p>
+        <p class="lead">DOB : {{student.dob}}</p>
+        <hr class="my-4">
+        <a class="btn btn-primary btn-lg" id="updatebtn" href="#" role="button">Update Profile</a>
+    </div>
+</div>
+
+<div class="container my-4" id="updatemodel">
+    <form action="/update/" method="post">
+    	{% csrf_token %}
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Enrollment No.</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="enroll" id="inputEmail3" value="{{request.session.enroll}}" placeholder="Enrollment">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="name" id="inputEmail3" value="{{student.name}}" placeholder="Name">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" name="email" id="inputPassword3" value="{{user_email}}" placeholder="Email">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Course</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="course" id="inputPassword3" value="{{student.course}}" placeholder="Course">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Branch</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="branch" id="inputPassword3" value="{{student.branch}}" placeholder="Branch">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Phone</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="phone" id="inputPassword3" value="{{student.phone}}" placeholder="Phone">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Birth Date</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="dob" id="inputPassword3" value="{{student.dob}}" placeholder="Date of Birth">
+            </div>
+        </div>
+        <input type="hidden" name="fee" value="35,600">
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
+{% block js %}
+<script>
+$('#profilemodel').hide();
+$('#updatemodel').hide();
+$('#updatebtn').click(function() {
+    $('#profilemodel').hide();
+	$('#updatemodel').show();
+});
+
+{% if update %}
+$('#updatemodel').show();
+{% else %}
+$('#profilemodel').show();
+{% endif %}
+</script>
+{% endblock %}

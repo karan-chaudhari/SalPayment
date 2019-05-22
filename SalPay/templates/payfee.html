@@ -1,0 +1,120 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %} Pay Fee SALPAY{% endblock %}
+{% block content %}
+<div class="sub_header_in sticky_header">
+    <div class="container text-center">
+        <h1>Checkout - Fee payment</h1>
+    </div>
+    <!-- /container -->
+</div>
+<!-- /sub_header -->
+<main>
+    <div class="container margin_60">
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="step first">
+                    <h3>1. Student-info</h3>
+                    <div class="tab-content checkout">
+                        <div class="tab-pane fade show active" id="tab_1" role="tabpanel" aria-labelledby="tab_1">
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="{{student.enrollment}}" placeholder="Enrollment">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="{{student.name}}" placeholder="Name">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="{{student.course}}" placeholder="Course">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="{{student.branch}}" placeholder="Branch">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="{{student.fees}}" placeholder="Fee">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="{{student.dob}}" placeholder="Birth Date">
+                            </div>
+                            <div class="row no-gutters">
+                                <div class="col-6 form-group pr-1">
+                                    <input type="text" class="form-control" value="{{student.email}}" placeholder="Email">
+                                </div>
+                                <div class="col-6 form-group pl-1">
+                                    <input type="text" class="form-control" value="{{student.phone}}" placeholder="Phone">
+                                </div>
+                            </div>
+                            <!-- /row -->
+                        </div>
+                    </div>
+                </div>
+                <!-- /step -->
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="step middle">
+                    <h3>2. Payment Method</h3>
+                    <div class="payments">
+                        <ul>
+                            <li>
+                                <label class="container_radio">Credit Card<a href="#0" class="info"></a>
+                                    <input type="radio" name="payment" checked>
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="container_radio">Debit Card<a href="#0" class="info"></a>
+                                    <input type="radio" name="payment">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <form action="/confirm/" method="POST">
+                                {% csrf_token %}
+                                <div class="custom-search-input-2">
+                                    <div class="form-group">
+                                        {% if messages %}
+                                        {% for message in messages %}
+                                        {% if message.tags == 'error' %}
+                                        <div class="alert alert-danger alert-dismissible fade show" style="width: 100%;" role="alert">
+                                            {{message}}
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        {% endif %}
+                                        {% endfor %}
+                                        {% endif %}
+                                        <input class="form-control" type="text" placeholder="Credit/Debit card " name="card" required>
+                                        <input class="form-control" type="text" placeholder="CVV" name="cvv" required>
+                                        <input class="form-control" type="text" placeholder="date" name="date" required>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /step -->
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="step last">
+                    <h3>3. Payment summary</h3>
+                    <div class="box_general summary">
+                        <ul>
+                            <li>Name<span class="float-right">{{student.name}}</span></li>
+                            <li>Enrollment <span class="float-right">{{student.enrollment}}</span></li>
+                            <li>Amount <span class="float-right">{{student.fees}}</span></li>
+                        </ul>
+                        <div class="form-group">
+                            <label class="container_check">Accepted <a target="_blank" href="#0">Terms and conditions</a>.
+                                <input type="checkbox" checked>
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <input type="submit" name="submit" class="btn_1 full-width cart" value="CONFIRM AND PAY">
+                        </form>
+                    </div>
+                    <!-- /box_general -->
+                </div>
+                <!-- /step -->
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</main>
+{% endblock %}

@@ -1,0 +1,103 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="invoice-title add_top_30">
+                <h2>Fee Receipt</h2>
+            </div>
+            <hr>
+        </div>
+    </div>
+    <table class="table" id="example">
+        <thead class="thead-dark">
+            <tr>
+                <!-- <th scope="col"></th> -->
+                <th scope="col">SALPAY - Student Copy</th>
+                <th scope="col"></th>
+                <th scope="col">SALPAY - Institute Copy</th>
+                <th scope="col"></th>
+            </tr>
+            <tr>
+                <!-- <th scope="col"></th> -->
+                <th scope="col">Student Details</th>
+                <th scope="col"></th>
+                <th scope="col">Student Details</th>
+                <th scope="col"></th>
+            </tr>
+            <!-- </thead> -->
+        <tbody>
+            <tr>
+                <!-- <th scope="row">1</th> -->
+                <td>Name</td>
+                <td>{{detail.name}}</td>
+                <td>Name</td>
+                <td>{{detail.name}}</td>
+                <!-- <td>@mdo</td> -->
+            </tr>
+            <tr border="1">
+                <td>Enrollment No.</td>
+                <td>{{detail.enrollment}}</td>
+                <td>Enrollment No.</td>
+                <td>{{detail.enrollment}}</td>
+            </tr>
+            <tr>
+                <td>Course</td>
+                <td>{{detail.course}}</td>
+                <td>Course</td>
+                <td>{{detail.course}}</td>
+            </tr>
+            <tr>
+                <td>Branch</td>
+                <td>{{detail.branch}}</td>
+                <td>Branch</td>
+                <td>{{detail.branch}}</td>
+            </tr>
+            <tr>
+                <td>Date of Birth</td>
+                <td>{{detail.dob}}</td>
+                <td>Date of Birth</td>
+                <td>{{detail.dob}}</td>
+            </tr>
+            <tr>
+                <td>Phone No.</td>
+                <td>{{detail.phone}}</td>
+                <td>Phone No.</td>
+                <td>{{detail.phone}}</td>
+            </tr>
+            <tr>
+                <td>Mail</td>
+                <td>{{detail.email}}</td>
+                <td>Mail</td>
+                <td>{{detail.email}}</td>
+            </tr>
+            <tr>
+                <td>Fee Status</td>
+                <td>Paid</td>
+                <td>Fee Status</td>
+                <td>Paid</td>
+            </tr>
+            <tr>
+                <td>Paid Date</td>
+                <td>{{paid_date|date:"d F, Y"}}</td>
+                <td>Paid Date</td>
+                <td>{{paid_date|date:"d F, Y"}}</td>
+            </tr>
+            <tr>
+                <td>Fee Amount</td>
+                <td>{{detail.fees}}</td>
+                <td>Fee Amount</td>
+                <td>{{detail.fees}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+    <table id="example">
+        <tbody>
+            <tr>
+                <td>Branch Stamp</td>
+                <td>Authorised Signature</td>
+                <td>Branch Stamp</td>
+                <td>Authorised Signature</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

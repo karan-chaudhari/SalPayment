@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %} Confirm SALPAY{% endblock %}
+{% block content %}
+<div class="sub_header_in sticky_header">
+    <div class="container text-center">
+        <h1>Fees Paid</h1>
+    </div>
+    <!-- /container -->
+</div>
+<main>
+    <div class="container margin_60">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div id="confirm">
+                    <div class="icon icon--order-success svg add_bottom_15">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="72" height="72">
+                            <g fill="none" stroke="#8EC343" stroke-width="2">
+                                <circle cx="36" cy="36" r="35" style="stroke-dasharray:240px, 240px; stroke-dashoffset: 480px;"></circle>
+                                <path d="M17.417,37.778l9.93,9.909l25.444-25.393" style="stroke-dasharray:50px, 50px; stroke-dashoffset: 0px;"></path>
+                            </g>
+                        </svg>
+                    </div>
+                    <h2>Payment Confirmed!</h2>
+                    <p>Your fee has been paid successfully.</p>
+                    <p>You are eligible for Mid Sem Exam.</p>
+                    <a href="/fee-receipt/" target="_blank" class="btn_1 full-width cart">Generate Receipt</a>
+                </div>
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</main>
+{% endblock %}
